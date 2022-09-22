@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_json_parse/model/messages.dart';
+import 'package:flutter_json_parse/model/persons.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,10 +30,32 @@ class _HomePageState extends State<HomePage> {
     debugPrint("Mesaj icerik : ${message.messageContent} ");
   }
 
+  void personsParse() {
+    String strData =
+        '{"kisiler":[{"kisi_id":"1","kisi_ad":"Ahmet","kisi_tel":"12312312"}'
+        ',{"kisi_id":"2","kisi_ad":"Mehmet","kisi_tel":"912318212"}]}';
+
+    var jsonData = json.decode(strData);
+
+    var jsonArray = jsonData["kisiler"] as List;
+
+    List<Persons> personList = jsonArray
+        .map((jsonArrayObject) => Persons.fromJson(jsonArrayObject))
+        .toList();
+
+    for (var person in personList) {
+      debugPrint("***********************");
+      debugPrint("Kisi Id: ${person.id}");
+      debugPrint("Kisi Adi: ${person.name}");
+      debugPrint("Kisi Telefon: ${person.phone}");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    messageParse();
+    // messageParse();
+    personsParse();
   }
 
   @override
