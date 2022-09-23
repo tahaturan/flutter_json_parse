@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_json_parse/helper/persons_answer_parse.dart';
+import 'package:flutter_json_parse/helper/movie_parse.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,7 +14,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // messageParse();
     // personsParse();
-    personAnswerParse();
+    // personAnswerParse();
+    movieAnswerParse();
   }
 
   @override
